@@ -49,17 +49,19 @@ angular.module('dseviz', ['dseviz'])
 
 		for(var i = 0; i < fields.length; i++){
 			fields[i] = fields[i].split(" ")[0];
+			fields[i] = fields[i].replace("\n", "");
 		}
 		for(var i = 0; i < keys.length; i++){
 			keys[i] = keys[i].replace(" ", "");
 		}
-		var cKeys = keys;
+		var cKeys = keys.slice(0);
 		cKeys.shift();
 
 		$scope.tableFields = fields;
 		$scope.partitionKey = keys[0];
 		$scope.clusterKeys = cKeys;
 
+		fields.splice(fields.indexOf(keys[0]), 1);
 		$scope.remainingFields = fields.filter(function (x) { return keys.indexOf(x) < 0 })
 
 	};
