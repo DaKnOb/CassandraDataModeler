@@ -81,8 +81,7 @@
 	<!-- Table creation query text area -->
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<form method="get" action="/">
-<textarea class="form-control" rows="10">CREATE TABLE reviews_by_day
+<textarea class="form-control" rows="10" id="createq">CREATE TABLE reviews_by_day
 (
 userid text,
 day int,
@@ -97,8 +96,7 @@ time timestamp,
 PRIMARY KEY (userid, productid, time, reviewid)
 )</textarea>
 			<hr>
-			<button type="submit" class="btn btn-default col-xs-12">Calculate Table</button>
-			</form>
+			<button type="submit" class="btn btn-default col-xs-12" ng-click="calculateTable()">Calculate Table</button>
 		</div>
 	</div>
 	
@@ -267,7 +265,7 @@ PRIMARY KEY (userid, productid, time, reviewid)
 	
 	<div class="row">
 		<div class="text-center">
-			<p>&copy; 2015 Antonios A. Chariton and Sebasti&aacute;n Est&eacute;vez</p>
+			<p>&copy; 2015-2016 Antonios A. Chariton and Sebasti&aacute;n Est&eacute;vez</p>
 			<p>Apache License v2.0 - Code on <a href="https://github.com/daknob/CassandraDataModeler">GitHub</a></p>
 		</div>
 	</div>
