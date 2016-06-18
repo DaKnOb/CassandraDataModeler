@@ -37,5 +37,30 @@ angular.module('dseviz', ['dseviz'])
 		"score",
 		"summary",
 		"review"
-	]
+	];
+
+	/* Table Parser */
+	$scope.calculateTable = function(){
+		var CreateQuery = $('#createq').val();
+		var spl = CreateQuery.split("(");
+		var fields = spl[1].split(",\n");
+		fields.pop();
+		var keys = spl[2].split(")")[0].split(",");
+
+		for(var i = 0; i < fields.length; i++){
+			fields[i] = fields[i].split(" ")[0];
+		}
+		for(var i = 0; i < keys.length; i++){
+			keys[i] = keys[i].replace(" ", "");
+		}
+		var cKeys = keys;
+		cKeys.shift();
+
+		$scope.tableFields = fields;
+		$scope.partitionKey = keys[0];
+		$scope.clusterKeys = cKeys;
+
+		$scope.remainingFields = fields.filter(function (x) { return keys.indexOf(x) < 0 })
+
+	};
 });
