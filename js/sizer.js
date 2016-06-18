@@ -242,12 +242,10 @@ var processTableDef = function(value){
 	likelyQueries = [];
 	likelyQueries.push(query);
 	$("#countResults").append("<h3>"+query+";</h3>");
-
 	cCCount = 0;
 	while (cCCount < clusterKeyList.length){
 		var cColumn = columns[clusterKeyList[cCCount]];
 		query = query + " AND "+cColumn + " = ?";
-
 		likelyQueries.push(query);
 
 		$("#countResults").append("<h3>"+query+";</h3>");
